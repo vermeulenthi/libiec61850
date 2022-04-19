@@ -113,10 +113,18 @@ void GooseSubscriber_setDstMac(GooseSubscriber subscriber,
 #include "eventHandlers/controlActionHandler.hpp"
 std::map< std::string, EventSubscriber*> EventSubscriber::m_subscriber_map = {};
 %}
+
+%feature("director") GenericServiceHandlerForPython;
+%{
+#include "eventHandlers/genericServiceHandler.hpp"
+std::map< uint32_t, GenericServiceHandlerForPython*> GenericServiceCallManagerForPython::m_call_map = {};
+%}
+
 %include "eventHandlers/eventHandler.hpp"
 %include "eventHandlers/reportControlBlockHandler.hpp"
 %include "eventHandlers/gooseHandler.hpp"
 %include "eventHandlers/commandTermHandler.hpp"
+%include "eventHandlers/genericServiceHandler.hpp"
 %include "eventHandlers/controlActionHandler.hpp"
 
 /* Goose Publisher section */
